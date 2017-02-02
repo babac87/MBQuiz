@@ -13,14 +13,19 @@ class Quiz: NSObject {
   static private var currentId = 0
   
   private var questions: [Question]
-  private var result = 0.0
+  private var result: Double
   private var answered = false
   private var attempted = false
   private var id: Int
   
-  init(questions: [Question], startingResult result: Double, id: Int) {
+  init(questions: [Question], startingResult result: Double = 0.0, id: Int?) {
     self.questions = questions
     self.result = result
-    self.id = id
+    if let id = id {
+      self.id = id
+    } else {
+      Quiz.currentId += 1
+      self.id = Quiz.currentId
+    }
   }
 }
