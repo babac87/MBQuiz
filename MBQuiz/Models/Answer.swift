@@ -10,8 +10,8 @@ import Foundation
 
 struct Answer {
   
-  private var answer: String
-  private var correct: Bool
+  var answer: String
+  var correct: Bool
   
   init(answer: String, correct: Bool) {
     self.answer = answer

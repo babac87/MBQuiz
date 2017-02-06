@@ -11,7 +11,7 @@ import UIKit
 class Question: NSObject {
 
   static private var currentId = 0
-  private var question: String
+  var question: String
   private var answers: [Answer]
   private var correctAnswers: [Answer]
   private var type: QuestionType
@@ -38,6 +38,8 @@ class Question: NSObject {
     self.init(question: question, answers: answers, correctAnswers: correctAnswers, type: .singleAnswer, id: id, points: 0.0, correctAnswerDescription: nil)
   }
   
-
+  func getAnswers() -> [Answer] {
+    return answers
+  }
   
 }
