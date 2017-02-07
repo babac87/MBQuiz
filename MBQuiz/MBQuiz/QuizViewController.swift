@@ -13,9 +13,12 @@ class QuizViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   var quiz: Quiz!
   
+  var currentCell: UICollectionViewCell!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     quiz = createDummyQuiz()
+    collectionView.reloadData()
     nextQuestion()
   }
   
@@ -23,7 +26,6 @@ class QuizViewController: UIViewController {
     guard let question = quiz.popQuestion() else {
       return
     }
-    collectionView.reloadData()
   }
   
   private func createDummyQuiz() -> Quiz{
@@ -33,7 +35,9 @@ class QuizViewController: UIViewController {
   
   private func createDummyQuestions() -> [Question] {
     let answers = createDummyAnswers()
-    return [Question(question: "How many legs tarantula has?", answers: answers, correctAnswers: [answers[1]], id: nil)]
+    let question1 = Question(question: "How many legs tarantula has?", answers: answers, correctAnswers: [answers[1]], id: nil)
+    let question2 = Question(question: "What number is 2 to the power of 3?", answers: answers, correctAnswers: [answers[1]], id: nil)
+    return [question1, question2]
   }
   
   private func createDummyAnswers() -> [Answer] {
@@ -50,11 +54,14 @@ extension QuizViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return quiz.numberOfQuestions
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionCell", for: indexPath) as! QuestionCollectionViewCell
+    
+    cell.rightButton.isEnabled = false
     cell.questionLabel.text = quiz.getCurrentQuestion()!.question
     
     cell.tableView.dataSource = self
@@ -62,6 +69,7 @@ extension QuizViewController: UICollectionViewDataSource {
     cell.delegate = self
     cell.tableView.reloadData()
     
+    currentCell = cell
     return cell
   }
 }
@@ -85,11 +93,21 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
     
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: false)
+    (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = true
+  }
 }
 
-extension QuizViewController: QuestionCollectionViewCellDelegate {
+extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
   func rightButtonPressed() {
-    nextQuestion()
+    if currentCell is DescriptionCollectionViewCell {
+      collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+      nextQuestion()
+    } else if currentCell is QuestionCollectionViewCell {
+      
+    }
   }
   
   func leftButtonPressed() {

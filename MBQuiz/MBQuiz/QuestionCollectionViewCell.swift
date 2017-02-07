@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol QuestionCollectionViewCellDelegate {
+protocol NavigationButtonsCollectionViewCellDelegate {
   func leftButtonPressed()
   func rightButtonPressed()
 }
 
 class QuestionCollectionViewCell: UICollectionViewCell {
   
-  var delegate: QuestionCollectionViewCellDelegate?
+  var delegate: NavigationButtonsCollectionViewCellDelegate?
   
   @IBOutlet weak var questionLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!

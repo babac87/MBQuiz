@@ -27,6 +27,8 @@
 		EEBC23EE1E44C56900D59B75 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */; };
 		EEBC23F01E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23EF1E44C81600D59B75 /* QuestionCollectionViewCell.swift */; };
 		EEBC23F11E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23EF1E44C81600D59B75 /* QuestionCollectionViewCell.swift */; };
+		EEBC23F51E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23F41E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift */; };
+		EEBC23F61E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23F41E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		EEBC23E81E435C7D00D59B75 /* QuestionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionType.swift; path = Models/QuestionType.swift; sourceTree = SOURCE_ROOT; };
 		EEBC23EB1E44C32700D59B75 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		EEBC23EF1E44C81600D59B75 /* QuestionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEBC23F41E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DescriptionCollectionViewCell.swift; path = Views/DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */,
-				EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */,
-				EEBC23EF1E44C81600D59B75 /* QuestionCollectionViewCell.swift */,
-				EEBC23EB1E44C32700D59B75 /* AnswerTableViewCell.swift */,
 				EEBC23BF1E4353A800D59B75 /* Main.storyboard */,
+				EEBC23F21E486E3600D59B75 /* ViewControllers */,
+				EEBC23F31E486E4200D59B75 /* Views */,
 				EEBC23E11E435A1500D59B75 /* Models */,
 				EEBC23C51E4353A800D59B75 /* Assets.xcassets */,
 				EEBC23C71E4353A800D59B75 /* LaunchScreen.storyboard */,
@@ -130,6 +132,24 @@
 				EEBC23E81E435C7D00D59B75 /* QuestionType.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		EEBC23F21E486E3600D59B75 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EEBC23F31E486E4200D59B75 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEBC23EF1E44C81600D59B75 /* QuestionCollectionViewCell.swift */,
+				EEBC23F41E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift */,
+				EEBC23EB1E44C32700D59B75 /* AnswerTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEBC23E31E435A4E00D59B75 /* Question.swift in Sources */,
+				EEBC23F51E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */,
 				EEBC23E91E435C7D00D59B75 /* QuestionType.swift in Sources */,
 				EEBC23C41E4353A800D59B75 /* MBQuiz.xcdatamodeld in Sources */,
 				EEBC23BE1E4353A800D59B75 /* QuizViewController.swift in Sources */,
@@ -260,6 +281,7 @@
 				EEBC23F11E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */,
 				EEBC23D41E4353A800D59B75 /* MBQuizTests.swift in Sources */,
 				EEBC23E71E435A6900D59B75 /* Answer.swift in Sources */,
+				EEBC23F61E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */,
 				EEBC23EA1E435C7D00D59B75 /* QuestionType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

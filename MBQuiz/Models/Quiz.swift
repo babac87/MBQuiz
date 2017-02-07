@@ -20,6 +20,12 @@ class Quiz: NSObject {
   private var attempted = false
   private var id: Int
   
+  var numberOfQuestions: Int {
+    get {
+      return questions.count + answeredQuestions.count + 1 // current question
+    }
+  }
+  
   init(questions: [Question], startingResult result: Double = 0.0, id: Int?) {
     self.questions = questions.reversed()
     self.answeredQuestions = [Question]()
