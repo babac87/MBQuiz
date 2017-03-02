@@ -17,35 +17,18 @@ class QuizViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    quiz = createDummyQuiz()
+    quiz = DummyQuiz.createDummyQuiz()
     collectionView.reloadData()
     nextQuestion()
   }
   
   func nextQuestion() {
     guard let question = quiz.popQuestion() else {
+      // TODO: Display results
       return
     }
   }
   
-  private func createDummyQuiz() -> Quiz{
-    let questions = createDummyQuestions()
-    return Quiz(questions: questions, id: nil)
-  }
-  
-  private func createDummyQuestions() -> [Question] {
-    let answers = createDummyAnswers()
-    let question1 = Question(question: "How many legs tarantula has?", answers: answers, correctAnswers: [answers[1]], id: nil)
-    let question2 = Question(question: "What number is 2 to the power of 3?", answers: answers, correctAnswers: [answers[1]], id: nil)
-    return [question1, question2]
-  }
-  
-  private func createDummyAnswers() -> [Answer] {
-    let answer1 = Answer(answer: "6", correct: false)
-    let answer2 = Answer(answer: "8", correct: true)
-    let answer3 = Answer(answer: "10", correct: false)
-    return [answer1, answer2, answer3]
-  }
 }
 
 extension QuizViewController: UICollectionViewDataSource {
@@ -81,11 +64,11 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return quiz.getCurrentQuestion()!.getAnswers().count
+    return quiz.getCurrentQuestion()!.answers.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let answer = quiz.getCurrentQuestion()!.getAnswers()[indexPath.row]
+    let answer = quiz.getCurrentQuestion()!.answers[indexPath.row]
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! AnswerTableViewCell
     
@@ -96,7 +79,15 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
-    (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = true
+    let question = quiz.getCurrentQuestion()!
+    let answer = question.answers[indexPath.row]
+    question.select(answer: answer)
+    tableView.reloadData()
+    if question.selectedAnswers.count > 0 {
+      (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = true
+    } else {
+      (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = false
+    }
   }
 }
 

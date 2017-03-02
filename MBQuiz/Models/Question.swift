@@ -12,16 +12,28 @@ class Question: NSObject {
 
   static private var currentId = 0
   var question: String
-  private var answers: [Answer]
-  private var correctAnswers: [Answer]
+  private var _answers: [Answer]
+  private var _selectedAnswers = Set<Answer>()
+  private var correctAnswers: Set<Answer>
   private var type: QuestionType
   private var id: Int
   private var points: Double
   private var correctAnswerDescription: String?
   
-  init(question: String, answers: [Answer], correctAnswers: [Answer], type: QuestionType, id: Int?, points: Double, correctAnswerDescription: String?) {
+  var answers: [Answer] {
+    get {
+      return _answers
+    }
+  }
+  var selectedAnswers: Set<Answer> {
+    get {
+      return _selectedAnswers
+    }
+  }
+  
+  init(question: String, answers: [Answer], correctAnswers: Set<Answer>, type: QuestionType, id: Int?, points: Double, correctAnswerDescription: String?) {
     self.question = question
-    self.answers = answers
+    self._answers = answers
     self.correctAnswers = correctAnswers
     self.type = type
     if let id = id {
@@ -34,12 +46,20 @@ class Question: NSObject {
     self.correctAnswerDescription = correctAnswerDescription
   }
   
-  convenience init(question: String, answers: [Answer], correctAnswers: [Answer], id: Int?) {
+  convenience init(question: String, answers: [Answer], correctAnswers: Set<Answer>, id: Int?) {
     self.init(question: question, answers: answers, correctAnswers: correctAnswers, type: .singleAnswer, id: id, points: 0.0, correctAnswerDescription: nil)
   }
   
-  func getAnswers() -> [Answer] {
-    return answers
-  }
-  
+  func select(answer: Answer) {
+    if _selectedAnswers.contains(answer) {
+      _selectedAnswers.remove(answer)
+      return
+    }
+    switch type {
+    case .multipleAnswer:
+      _selectedAnswers.insert(answer)
+    default:
+      _selectedAnswers = Set<Answer>([answer])
+    }
+  }  
 }

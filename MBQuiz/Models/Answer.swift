@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Answer {
+class Answer: NSObject {
   
   var answer: String
   var correct: Bool

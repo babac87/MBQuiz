@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE7EEDB31E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
+		EE7EEDB41E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
 		EEBC23BC1E4353A800D59B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */; };
 		EEBC23BE1E4353A800D59B75 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */; };
 		EEBC23C11E4353A800D59B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC23BF1E4353A800D59B75 /* Main.storyboard */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyQuiz.swift; sourceTree = "<group>"; };
 		EEBC23B81E4353A800D59B75 /* MBQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 			children = (
 				EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */,
 				EEBC23BF1E4353A800D59B75 /* Main.storyboard */,
+				EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */,
 				EEBC23F21E486E3600D59B75 /* ViewControllers */,
 				EEBC23F31E486E4200D59B75 /* Views */,
 				EEBC23E11E435A1500D59B75 /* Models */,
@@ -263,6 +267,7 @@
 				EEBC23C41E4353A800D59B75 /* MBQuiz.xcdatamodeld in Sources */,
 				EEBC23BE1E4353A800D59B75 /* QuizViewController.swift in Sources */,
 				EEBC23F01E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */,
+				EE7EEDB31E670FB000C472C3 /* DummyQuiz.swift in Sources */,
 				EEBC23E61E435A6900D59B75 /* Answer.swift in Sources */,
 				EEBC23DF1E43540C00D59B75 /* Quiz.swift in Sources */,
 				EEBC23BC1E4353A800D59B75 /* AppDelegate.swift in Sources */,
@@ -277,6 +282,7 @@
 				EEBC23E41E435A4E00D59B75 /* Question.swift in Sources */,
 				EEBC23EE1E44C56900D59B75 /* QuizViewController.swift in Sources */,
 				EEBC23ED1E44C32700D59B75 /* AnswerTableViewCell.swift in Sources */,
+				EE7EEDB41E670FB000C472C3 /* DummyQuiz.swift in Sources */,
 				EEBC23E01E43540C00D59B75 /* Quiz.swift in Sources */,
 				EEBC23F11E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */,
 				EEBC23D41E4353A800D59B75 /* MBQuizTests.swift in Sources */,
@@ -482,6 +488,7 @@
 				EEBC23DA1E4353A800D59B75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EEBC23DB1E4353A800D59B75 /* Build configuration list for PBXNativeTarget "MBQuizTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +497,7 @@
 				EEBC23DD1E4353A800D59B75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
