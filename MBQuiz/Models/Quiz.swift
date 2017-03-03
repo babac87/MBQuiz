@@ -19,12 +19,9 @@ class Quiz: NSObject {
   private var answered = false
   private var attempted = false
   private var id: Int
-  
-  var numberOfQuestions: Int {
-    get {
-      return questions.count + answeredQuestions.count + 1 // current question
-    }
-  }
+  public private(set) var questionSequel: [QuestionSequelType]
+  public private(set) var currentSequelIndex = 0
+//  public private(set) var numberOfQuestions: Int
   
   init(questions: [Question], startingResult result: Double = 0.0, id: Int?) {
     self.questions = questions.reversed()
@@ -36,6 +33,17 @@ class Quiz: NSObject {
       Quiz.currentId += 1
       self.id = Quiz.currentId
     }
+    questionSequel = [QuestionSequelType]()
+    for question in questions {
+      questionSequel.append(.question)
+      if question.correctAnswerDescription != nil {
+        questionSequel.append(.description)
+      }
+    }
+    if questionSequel.count > 0 {
+      questionSequel.append(.result)
+    }
+//    numberOfQuestions = questions.count + answeredQuestions.count + 1 // current question
   }
   
   func getCurrentQuestion() -> Question? {
@@ -56,4 +64,12 @@ class Quiz: NSObject {
     currentQuestion = nil
   }
   
+  /// Returns next SequelType.
+  /// Helps in choosing next CollectionViewCell
+  func nextInSequel() -> QuestionSequelType {
+    if currentSequelIndex < questionSequel.count {
+      currentSequelIndex += 1
+    }
+    return questionSequel[currentSequelIndex]
+  }
 }

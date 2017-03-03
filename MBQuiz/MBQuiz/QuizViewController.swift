@@ -37,7 +37,7 @@ extension QuizViewController: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return quiz.numberOfQuestions
+    return quiz.questionSequel.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,11 +68,18 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let answer = quiz.getCurrentQuestion()!.answers[indexPath.row]
+    let question = quiz.getCurrentQuestion()!
+    let answer = question.answers[indexPath.row]
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! AnswerTableViewCell
     
     cell.answerLabel.text = answer.answer
+    
+    if question.selectedAnswers.contains(answer) {
+      cell.checkImageView.image = #imageLiteral(resourceName: "answerbuttonselected_icon")
+    } else {
+      cell.checkImageView.image = #imageLiteral(resourceName: "answerbutton_icon")
+    }
     
     return cell
   }
@@ -83,6 +90,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
     let answer = question.answers[indexPath.row]
     question.select(answer: answer)
     tableView.reloadData()
+    // FIXME: On different display sizes right button is used from next cell, so right button doesn't get enabled
     if question.selectedAnswers.count > 0 {
       (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = true
     } else {
@@ -93,11 +101,14 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
   func rightButtonPressed() {
-    if currentCell is DescriptionCollectionViewCell {
-      collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+    switch quiz.nextInSequel() {
+    case .question:
+      collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+    case .description:
+      collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
       nextQuestion()
-    } else if currentCell is QuestionCollectionViewCell {
-      
+    case .result:
+      _ = quiz
     }
   }
   

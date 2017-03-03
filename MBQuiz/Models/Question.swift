@@ -18,7 +18,7 @@ class Question: NSObject {
   private var type: QuestionType
   private var id: Int
   private var points: Double
-  private var correctAnswerDescription: String?
+  public private(set) var correctAnswerDescription: String?
   
   var answers: [Answer] {
     get {

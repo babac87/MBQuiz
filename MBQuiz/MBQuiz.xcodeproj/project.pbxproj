@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		EE7EEDB31E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
 		EE7EEDB41E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
+		EE7EEDB61E68367900C472C3 /* QuestionSequelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */; };
+		EE7EEDB71E68367900C472C3 /* QuestionSequelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */; };
+		EE7EEDB91E68479A00C472C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7EEDB81E68479A00C472C3 /* Assets.xcassets */; };
+		EE7EEDBA1E68479A00C472C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE7EEDB81E68479A00C472C3 /* Assets.xcassets */; };
 		EEBC23BC1E4353A800D59B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */; };
 		EEBC23BE1E4353A800D59B75 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */; };
 		EEBC23C11E4353A800D59B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC23BF1E4353A800D59B75 /* Main.storyboard */; };
 		EEBC23C41E4353A800D59B75 /* MBQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23C21E4353A800D59B75 /* MBQuiz.xcdatamodeld */; };
-		EEBC23C61E4353A800D59B75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEBC23C51E4353A800D59B75 /* Assets.xcassets */; };
 		EEBC23C91E4353A800D59B75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC23C71E4353A800D59B75 /* LaunchScreen.storyboard */; };
 		EEBC23D41E4353A800D59B75 /* MBQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23D31E4353A800D59B75 /* MBQuizTests.swift */; };
 		EEBC23DF1E43540C00D59B75 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23DE1E43540C00D59B75 /* Quiz.swift */; };
@@ -45,12 +48,13 @@
 
 /* Begin PBXFileReference section */
 		EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyQuiz.swift; sourceTree = "<group>"; };
+		EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionSequelType.swift; path = Models/QuestionSequelType.swift; sourceTree = SOURCE_ROOT; };
+		EE7EEDB81E68479A00C472C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		EEBC23B81E4353A800D59B75 /* MBQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		EEBC23C01E4353A800D59B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEBC23C31E4353A800D59B75 /* MBQuiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBQuiz.xcdatamodel; sourceTree = "<group>"; };
-		EEBC23C51E4353A800D59B75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEBC23C81E4353A800D59B75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EEBC23CA1E4353A800D59B75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEBC23CF1E4353A800D59B75 /* MBQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +114,7 @@
 				EEBC23F21E486E3600D59B75 /* ViewControllers */,
 				EEBC23F31E486E4200D59B75 /* Views */,
 				EEBC23E11E435A1500D59B75 /* Models */,
-				EEBC23C51E4353A800D59B75 /* Assets.xcassets */,
+				EE7EEDB81E68479A00C472C3 /* Assets.xcassets */,
 				EEBC23C71E4353A800D59B75 /* LaunchScreen.storyboard */,
 				EEBC23CA1E4353A800D59B75 /* Info.plist */,
 				EEBC23C21E4353A800D59B75 /* MBQuiz.xcdatamodeld */,
@@ -134,6 +138,7 @@
 				EEBC23E21E435A4E00D59B75 /* Question.swift */,
 				EEBC23E51E435A6900D59B75 /* Answer.swift */,
 				EEBC23E81E435C7D00D59B75 /* QuestionType.swift */,
+				EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -242,7 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEBC23C91E4353A800D59B75 /* LaunchScreen.storyboard in Resources */,
-				EEBC23C61E4353A800D59B75 /* Assets.xcassets in Resources */,
+				EE7EEDB91E68479A00C472C3 /* Assets.xcassets in Resources */,
 				EEBC23C11E4353A800D59B75 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7EEDBA1E68479A00C472C3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE7EEDB61E68367900C472C3 /* QuestionSequelType.swift in Sources */,
 				EEBC23E31E435A4E00D59B75 /* Question.swift in Sources */,
 				EEBC23F51E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */,
 				EEBC23E91E435C7D00D59B75 /* QuestionType.swift in Sources */,
@@ -286,6 +293,7 @@
 				EEBC23E01E43540C00D59B75 /* Quiz.swift in Sources */,
 				EEBC23F11E44C81600D59B75 /* QuestionCollectionViewCell.swift in Sources */,
 				EEBC23D41E4353A800D59B75 /* MBQuizTests.swift in Sources */,
+				EE7EEDB71E68367900C472C3 /* QuestionSequelType.swift in Sources */,
 				EEBC23E71E435A6900D59B75 /* Answer.swift in Sources */,
 				EEBC23F61E48BB1F00D59B75 /* DescriptionCollectionViewCell.swift in Sources */,
 				EEBC23EA1E435C7D00D59B75 /* QuestionType.swift in Sources */,
