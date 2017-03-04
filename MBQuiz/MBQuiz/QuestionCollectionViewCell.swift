@@ -8,26 +8,12 @@
 
 import UIKit
 
-protocol NavigationButtonsCollectionViewCellDelegate {
-  func leftButtonPressed()
-  func rightButtonPressed()
-}
 
-class QuestionCollectionViewCell: UICollectionViewCell {
-  
-  var delegate: NavigationButtonsCollectionViewCellDelegate?
-  
-  @IBOutlet weak var questionLabel: UILabel!
+
+class QuestionCollectionViewCell: QuizCollectionViewCell {
+    
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var leftButton: UIButton!
-  @IBOutlet weak var rightButton: UIButton!
-  
-  @IBAction func leftButtonPressed(_ sender: UIButton) {
-    delegate?.leftButtonPressed()
-  }
-  
-  @IBAction func rightButtonPressed(_ sender: UIButton) {
-    delegate?.rightButtonPressed()
-  }
+  @IBOutlet weak var questionImageView: UIImageView!
+
   
 }

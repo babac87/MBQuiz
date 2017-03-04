@@ -42,18 +42,29 @@ extension QuizViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionCell", for: indexPath) as! QuestionCollectionViewCell
-    
-    cell.rightButton.isEnabled = false
-    cell.questionLabel.text = quiz.getCurrentQuestion()!.question
-    
-    cell.tableView.dataSource = self
-    cell.tableView.delegate = self
-    cell.delegate = self
-    cell.tableView.reloadData()
-    
-    currentCell = cell
-    return cell
+//    switch quiz.questionSequel[indexPath.row] {
+//    case .question:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionCell", for: indexPath) as! QuestionCollectionViewCell
+      
+      cell.rightButton.isEnabled = false
+      cell.questionLabel.text = quiz.getCurrentQuestion()!.question
+      
+      cell.tableView.dataSource = self
+      cell.tableView.delegate = self
+      cell.delegate = self
+      cell.tableView.reloadData()
+      
+      currentCell = cell
+      return cell
+//    case .description:
+//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCollectionViewCell
+//      cell.rightButton.isEnabled = true
+//      cell.questionLabel.text = quiz.getCurrentQuestion()!.question
+//
+//    case .result:
+//    
+//    }
+
   }
 }
 
