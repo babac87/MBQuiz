@@ -8,6 +8,9 @@
 
 import UIKit
 
-class DescriptionCollectionViewCell: UICollectionViewCell {
+class DescriptionCollectionViewCell: QuizCollectionViewCell {
+  
+  @IBOutlet weak var correctImageView: UIImageView!
+  @IBOutlet weak var descriptionTextView: UITextView!
   
 }

@@ -14,6 +14,4 @@ class QuestionCollectionViewCell: QuizCollectionViewCell {
     
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var questionImageView: UIImageView!
-
-  
 }

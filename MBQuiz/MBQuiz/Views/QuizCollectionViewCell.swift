@@ -18,7 +18,7 @@ class QuizCollectionViewCell: UICollectionViewCell {
   var delegate: NavigationButtonsCollectionViewCellDelegate?
 
   @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var questionLabel: UILabel!
+  @IBOutlet weak var topLabel: UILabel!
   @IBOutlet weak var leftButton: UIButton!
   @IBOutlet weak var rightButton: UIButton!
   

@@ -127,9 +127,9 @@
                                             <outlet property="imageView" destination="7Cg-4r-mGT" id="Tqa-jG-ljf"/>
                                             <outlet property="leftButton" destination="zMZ-fU-tOc" id="NWo-PP-UTz"/>
                                             <outlet property="questionImageView" destination="I0a-YI-kRu" id="8Ny-Ju-bIM"/>
-                                            <outlet property="questionLabel" destination="NYu-ec-pY0" id="94v-E7-C8f"/>
                                             <outlet property="rightButton" destination="JGE-1x-Gnu" id="Rf1-GE-f7Q"/>
                                             <outlet property="tableView" destination="vZg-9y-JUZ" id="PuI-yT-4Fd"/>
+                                            <outlet property="topLabel" destination="NYu-ec-pY0" id="faf-3z-i0p"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DescriptionCell" id="SIi-Z1-RP9" customClass="DescriptionCollectionViewCell" customModule="MBQuiz" customModuleProvider="target">
@@ -166,14 +166,14 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <state key="normal" title="Skip"/>
                                                                     <connections>
-                                                                        <action selector="leftButtonPressed:" destination="SIi-Z1-RP9" eventType="touchUpInside" id="iHm-hG-obb"/>
+                                                                        <action selector="leftButtonPressed:" destination="SIi-Z1-RP9" eventType="touchUpInside" id="OQz-ZC-CsB"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqr-Tx-gSi">
                                                                     <rect key="frame" x="30" y="0.0" width="32" height="30"/>
                                                                     <state key="normal" title="Next"/>
                                                                     <connections>
-                                                                        <action selector="rightButtonPressed:" destination="SIi-Z1-RP9" eventType="touchUpInside" id="tTI-EY-VjL"/>
+                                                                        <action selector="rightButtonPressed:" destination="SIi-Z1-RP9" eventType="touchUpInside" id="KHm-1Q-Gco"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -200,12 +200,15 @@
                                         </view>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="correctImageView" destination="FW3-h1-682" id="ygW-ce-ntC"/>
+                                            <outlet property="descriptionTextView" destination="w59-WV-BQU" id="cv6-CG-muK"/>
+                                            <outlet property="imageView" destination="om1-Nc-FKd" id="QNR-SD-ubf"/>
                                             <outlet property="leftButton" destination="UFJ-h0-SRl" id="vjc-DE-0tr"/>
-                                            <outlet property="questionLabel" destination="d6j-9u-MPr" id="Z26-Zk-fF8"/>
                                             <outlet property="rightButton" destination="Rqr-Tx-gSi" id="5h5-pz-4hf"/>
+                                            <outlet property="topLabel" destination="d6j-9u-MPr" id="94e-yR-mP1"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScoreCell" id="dtJ-2J-Bs4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ScoreCell" id="dtJ-2J-Bs4" customClass="ResultsCollectionViewCell" customModule="MBQuiz" customModuleProvider="target">
                                         <rect key="frame" x="728" y="20" width="343" height="627"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -235,19 +238,19 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <state key="normal" title="Skip"/>
                                                                     <connections>
-                                                                        <action selector="leftButtonPressed:" destination="dtJ-2J-Bs4" eventType="touchUpInside" id="DHN-HQ-VPs"/>
+                                                                        <action selector="leftButtonPressed:" destination="dtJ-2J-Bs4" eventType="touchUpInside" id="JES-OL-6Y7"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7W-D4-c0p">
                                                                     <rect key="frame" x="30" y="0.0" width="32" height="30"/>
                                                                     <state key="normal" title="Next"/>
                                                                     <connections>
-                                                                        <action selector="rightButtonPressed:" destination="dtJ-2J-Bs4" eventType="touchUpInside" id="oMA-Gb-B7t"/>
+                                                                        <action selector="rightButtonPressed:" destination="dtJ-2J-Bs4" eventType="touchUpInside" id="4Eb-gb-1Zq"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-fc-hSv">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-fc-hSv">
                                                             <rect key="frame" x="8" y="101" width="312" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -276,9 +279,12 @@
                                         </view>
                                         <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="leftButton" destination="sIq-Ai-SwP" id="CWM-6H-MRC"/>
+                                            <outlet property="imageView" destination="MwB-AC-yqo" id="20W-kN-6pX"/>
+                                            <outlet property="leftButton" destination="sIq-Ai-SwP" id="tlt-ti-TJR"/>
                                             <outlet property="questionLabel" destination="VKx-fc-hSv" id="j7P-qJ-1yl"/>
-                                            <outlet property="rightButton" destination="F7W-D4-c0p" id="x6J-Ly-3bD"/>
+                                            <outlet property="rightButton" destination="F7W-D4-c0p" id="TCK-Tp-IZ8"/>
+                                            <outlet property="tableView" destination="3NB-EP-ypW" id="qr8-vH-z9u"/>
+                                            <outlet property="topLabel" destination="VKx-fc-hSv" id="FdD-If-WqC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
