@@ -13,7 +13,7 @@ class Quiz: NSObject {
   static private var currentId = 0
   
   private var questions: [Question]
-  private var answeredQuestions: [Question]
+  public private(set) var answeredQuestions: [Question]
   private var currentQuestion: Question?
   private var result: Double
   private var answered = false
@@ -67,7 +67,7 @@ class Quiz: NSObject {
   /// Returns next SequelType.
   /// Helps in choosing next CollectionViewCell
   func nextInSequel() -> QuestionSequelType {
-    if currentSequelIndex < questionSequel.count {
+    if currentSequelIndex < questionSequel.count - 1{
       currentSequelIndex += 1
     }
     return questionSequel[currentSequelIndex]

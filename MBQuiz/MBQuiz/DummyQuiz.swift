@@ -17,7 +17,7 @@ class DummyQuiz: NSObject {
   
   static private func createDummyQuestions() -> [Question] {
     let answers = createDummyAnswers()
-    let question1 = Question(question: "How many legs tarantula has?", answers: answers, correctAnswers: [answers[1]], id: nil)
+    let question1 = Question(question: "How many legs tarantula has?", answers: answers, correctAnswers: [answers[1]], type: .singleAnswer, correctAnswerDescription: "Tarantula has many legs :)", id: nil, points: 5)
     let question2 = Question(question: "What number is 2 to the power of 3?", answers: answers, correctAnswers: [answers[1]], id: nil)
     return [question1, question2]
   }

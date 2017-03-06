@@ -12,28 +12,19 @@ class Question: NSObject {
 
   static private var currentId = 0
   var question: String
-  private var _answers: [Answer]
-  private var _selectedAnswers = Set<Answer>()
+  public private(set) var answers: [Answer]
+  public private(set) var selectedAnswers = Set<Answer>()
   private var correctAnswers: Set<Answer>
   private var type: QuestionType
   private var id: Int
   private var points: Double
   public private(set) var correctAnswerDescription: String?
+  // TODO: Make mechanism for correctly answered questions
+  var answeredCorrectly = false
   
-  var answers: [Answer] {
-    get {
-      return _answers
-    }
-  }
-  var selectedAnswers: Set<Answer> {
-    get {
-      return _selectedAnswers
-    }
-  }
-  
-  init(question: String, answers: [Answer], correctAnswers: Set<Answer>, type: QuestionType, id: Int?, points: Double, correctAnswerDescription: String?) {
+  init(question: String, answers: [Answer], correctAnswers: Set<Answer>, type: QuestionType, correctAnswerDescription: String?, id: Int?, points: Double) {
     self.question = question
-    self._answers = answers
+    self.answers = answers
     self.correctAnswers = correctAnswers
     self.type = type
     if let id = id {
@@ -47,19 +38,19 @@ class Question: NSObject {
   }
   
   convenience init(question: String, answers: [Answer], correctAnswers: Set<Answer>, id: Int?) {
-    self.init(question: question, answers: answers, correctAnswers: correctAnswers, type: .singleAnswer, id: id, points: 0.0, correctAnswerDescription: nil)
+    self.init(question: question, answers: answers, correctAnswers: correctAnswers, type: .singleAnswer, correctAnswerDescription: nil, id: id, points: 0.0)
   }
   
   func select(answer: Answer) {
-    if _selectedAnswers.contains(answer) {
-      _selectedAnswers.remove(answer)
+    if selectedAnswers.contains(answer) {
+      selectedAnswers.remove(answer)
       return
     }
     switch type {
     case .multipleAnswer:
-      _selectedAnswers.insert(answer)
+      selectedAnswers.insert(answer)
     default:
-      _selectedAnswers = Set<Answer>([answer])
+      selectedAnswers = Set<Answer>([answer])
     }
   }  
 }
