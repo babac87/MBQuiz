@@ -14,7 +14,7 @@ class Quiz: NSObject {
   
   private var questions: [Question]
   public private(set) var answeredQuestions: [Question]
-  private var currentQuestion: Question?
+  public private(set) var currentQuestion: Question?
   private var result: Double
   private var answered = false
   private var attempted = false
@@ -44,10 +44,6 @@ class Quiz: NSObject {
       questionSequel.append(.result)
     }
 //    numberOfQuestions = questions.count + answeredQuestions.count + 1 // current question
-  }
-  
-  func getCurrentQuestion() -> Question? {
-    return currentQuestion
   }
   
   func popQuestion() -> Question? {

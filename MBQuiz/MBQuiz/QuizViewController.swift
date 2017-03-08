@@ -13,11 +13,12 @@ class QuizViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   var quiz: Quiz!
   
-  var currentCell: UICollectionViewCell!
+  var currentCell: QuizCollectionViewCell!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     quiz = DummyQuiz.createDummyQuiz()
+    
     collectionView.reloadData()
     nextQuestion()
   }
@@ -32,7 +33,7 @@ class QuizViewController: UIViewController {
   
 }
 
-extension QuizViewController: UICollectionViewDataSource {
+extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return 1
   }
@@ -46,28 +47,31 @@ extension QuizViewController: UICollectionViewDataSource {
     switch quiz.questionSequel[indexPath.row] {
     case .question:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionCell", for: indexPath) as! QuestionCollectionViewCell
-      
+      currentCell = cell
+
       cell.rightButton.isEnabled = false
-      cell.topLabel.text = quiz.getCurrentQuestion()!.question
+      cell.topLabel.text = quiz.currentQuestion!.question
       
       cell.delegate = self
       cell.tableView.dataSource = self
       cell.tableView.delegate = self
       cell.tableView.reloadData()
       
-      currentCell = cell
       return cell
     case .description:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCollectionViewCell
+      currentCell = cell
+
       cell.rightButton.isEnabled = true
-      let currentQuestion = quiz.getCurrentQuestion()!
+      let currentQuestion = quiz.currentQuestion!
       cell.topLabel.text = currentQuestion.question
       cell.descriptionTextView.text = currentQuestion.correctAnswerDescription
       cell.delegate = self
-      
+
       return cell
     case .result:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCollectionViewCell
+      currentCell = cell
       cell.rightButton.isEnabled = true
       cell.topLabel.text = "Results"
       cell.leftButton.isHidden = true
@@ -79,6 +83,10 @@ extension QuizViewController: UICollectionViewDataSource {
       return cell
     }
   }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
+  }
 }
 
 extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
@@ -89,16 +97,15 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if currentCell is QuestionCollectionViewCell {
-      return quiz.getCurrentQuestion()!.answers.count
-    } else if currentCell is QuizCollectionViewCell {
+      return quiz.currentQuestion!.answers.count
+    } else {
       return quiz.answeredQuestions.count
     }
-    return 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if currentCell is QuestionCollectionViewCell {
-      let question = quiz.getCurrentQuestion()!
+      let question = quiz.currentQuestion!
       let answer = question.answers[indexPath.row]
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell") as! AnswerTableViewCell
@@ -111,26 +118,26 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
         cell.checkImageView.image = #imageLiteral(resourceName: "answerbutton_icon")
       }
       return cell
-    } else {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell")
-      cell?.textLabel?.text = quiz.answeredQuestions[indexPath.row].question
+    } else if currentCell is ResultsCollectionViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell")!
+      cell.textLabel?.text = quiz.answeredQuestions[indexPath.row].question
+      return cell
     }
     
     return UITableViewCell()
-    
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
-    let question = quiz.getCurrentQuestion()!
+    let question = quiz.currentQuestion!
     let answer = question.answers[indexPath.row]
     question.select(answer: answer)
     tableView.reloadData()
     // FIXME: On different display sizes right button is used from next cell, so right button doesn't get enabled
     if question.selectedAnswers.count > 0 {
-      (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = true
+      currentCell.rightButton.isEnabled = true
     } else {
-      (currentCell as! QuestionCollectionViewCell).rightButton.isEnabled = false
+      currentCell.rightButton.isEnabled = false
     }
   }
 }
@@ -140,11 +147,13 @@ extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
     switch quiz.nextInSequel() {
     case .question:
       collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+      quiz.questionAnswered()
       nextQuestion()
     case .description:
       collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
     case .result:
       collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+      quiz.questionAnswered()
     }
   }
   
