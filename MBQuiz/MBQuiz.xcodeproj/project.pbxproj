@@ -16,6 +16,7 @@
 		EE7EEDBC1E699A1200C472C3 /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDBB1E699A1200C472C3 /* QuizCollectionViewCell.swift */; };
 		EE7EEDBD1E699A1200C472C3 /* QuizCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDBB1E699A1200C472C3 /* QuizCollectionViewCell.swift */; };
 		EE7EEDC41E6D757900C472C3 /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDC31E6D757900C472C3 /* ResultsCollectionViewCell.swift */; };
+		EE7EEDC71E70634600C472C3 /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDC31E6D757900C472C3 /* ResultsCollectionViewCell.swift */; };
 		EEBC23BC1E4353A800D59B75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */; };
 		EEBC23BE1E4353A800D59B75 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBC23BD1E4353A800D59B75 /* QuizViewController.swift */; };
 		EEBC23C11E4353A800D59B75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEBC23BF1E4353A800D59B75 /* Main.storyboard */; };
@@ -298,6 +299,7 @@
 				EEBC23E41E435A4E00D59B75 /* Question.swift in Sources */,
 				EEBC23EE1E44C56900D59B75 /* QuizViewController.swift in Sources */,
 				EEBC23ED1E44C32700D59B75 /* AnswerTableViewCell.swift in Sources */,
+				EE7EEDC71E70634600C472C3 /* ResultsCollectionViewCell.swift in Sources */,
 				EE7EEDBD1E699A1200C472C3 /* QuizCollectionViewCell.swift in Sources */,
 				EE7EEDB41E670FB000C472C3 /* DummyQuiz.swift in Sources */,
 				EEBC23E01E43540C00D59B75 /* Quiz.swift in Sources */,
