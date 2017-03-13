@@ -11,10 +11,12 @@ import UIKit
 class QuizTestViewController: UIViewController {
   
   @IBAction func startQuiz(_ sender: Any) {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let quiz = DummyQuiz.createDummyQuiz()
-    let vc = storyboard.instantiateViewController(withIdentifier: "QuizVC") as! QuizViewController
-    vc.quiz = quiz
-    present(vc, animated: true, completion: nil)
+    let url = URL(string: "http://devmobile.oroundocms.com/api/quizzes/all?channel_id=34&language_id=1")!
+    Quiz.getQuizData(from: url) { (quiz: Quiz) in
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let vc = storyboard.instantiateViewController(withIdentifier: "QuizVC") as! QuizViewController
+      vc.quiz = quiz
+      self.present(vc, animated: true, completion: nil)
+    }
   }
 }

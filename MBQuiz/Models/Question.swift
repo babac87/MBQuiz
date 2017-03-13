@@ -6,9 +6,10 @@
 //  Copyright © 2017 Happy Boar. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import Unbox
 
-class Question: NSObject {
+class Question: NSObject, Unboxable {
 
   static private var currentId = 0
   var question: String
@@ -25,6 +26,17 @@ class Question: NSObject {
     }
   }
   
+  required init(unboxer: Unboxer) throws {
+    question = try unboxer.unbox(key: "text")
+    answers = try unboxer.unbox(key: "answers")
+    correctAnswers = Set(answers.filter{ $0.correct == true })
+    // For now is singleAnswer
+    type = .singleAnswer
+    id = try unboxer.unbox(key: "id")
+    // For now no points
+    points = 0.0
+    correctAnswerDescription = unboxer.unbox(key: "description")
+  }
   init(question: String, answers: [Answer], correctAnswers: Set<Answer>, type: QuestionType, correctAnswerDescription: String?, id: Int?, points: Double) {
     self.question = question
     self.answers = answers

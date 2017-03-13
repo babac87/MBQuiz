@@ -52,11 +52,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1125" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1029" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f7w-SK-1MU">
-                                <rect key="frame" x="0.0" y="0.0" width="1125" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1029" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="NgX-xA-jLl">
                                     <size key="itemSize" width="343" height="667"/>
@@ -441,7 +441,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="1125" height="667"/>
+                    <size key="freeformSize" width="1029" height="667"/>
                     <connections>
                         <outlet property="collectionView" destination="f7w-SK-1MU" id="35O-CT-Dfa"/>
                     </connections>

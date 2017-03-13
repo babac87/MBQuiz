@@ -7,11 +7,17 @@
 //
 
 import Foundation
+import Unbox
 
-class Answer: NSObject {
+class Answer: NSObject, Unboxable {
   
   var answer: String
   var correct: Bool
+  
+  required init(unboxer: Unboxer) throws {
+    answer = try unboxer.unbox(key: "text")
+    correct = try unboxer.unbox(key: "is_correct")
+  }
   
   init(answer: String, correct: Bool) {
     self.answer = answer
