@@ -21,7 +21,11 @@ class Quiz: NSObject {
   private var id: Int
   public private(set) var questionSequel: [QuestionSequelType]
   public private(set) var currentSequelIndex = 0
-//  public private(set) var numberOfQuestions: Int
+  var currentSequelType: QuestionSequelType {
+    get {
+      return questionSequel[currentSequelIndex]
+    }
+  }
   
   init(questions: [Question], startingResult result: Double = 0.0, id: Int?) {
     self.questions = questions.reversed()
@@ -43,15 +47,11 @@ class Quiz: NSObject {
     if questionSequel.count > 0 {
       questionSequel.append(.result)
     }
-//    numberOfQuestions = questions.count + answeredQuestions.count + 1 // current question
   }
   
-  func popQuestion() -> Question? {
+  func nextQuestion() {
     if questions.count > 0 {
       currentQuestion = questions.removeLast()
-      return currentQuestion
-    } else {
-      return nil
     }
   }
   
@@ -61,11 +61,13 @@ class Quiz: NSObject {
   }
   
   /// Returns next SequelType.
+  ///
   /// Helps in choosing next CollectionViewCell
-  func nextInSequel() -> QuestionSequelType {
+  func nextInSequel() -> QuestionSequelType? {
     if currentSequelIndex < questionSequel.count - 1{
       currentSequelIndex += 1
+      return questionSequel[currentSequelIndex]
     }
-    return questionSequel[currentSequelIndex]
+    return nil
   }
 }

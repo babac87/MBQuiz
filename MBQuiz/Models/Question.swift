@@ -14,13 +14,16 @@ class Question: NSObject {
   var question: String
   public private(set) var answers: [Answer]
   public private(set) var selectedAnswers = Set<Answer>()
-  private var correctAnswers: Set<Answer>
+  public private(set) var correctAnswers: Set<Answer>
   private var type: QuestionType
   private var id: Int
   private var points: Double
   public private(set) var correctAnswerDescription: String?
-  // TODO: Make mechanism for correctly answered questions
-  var answeredCorrectly = false
+  var answeredCorrectly: Bool {
+    get {
+      return correctAnswers == selectedAnswers
+    }
+  }
   
   init(question: String, answers: [Answer], correctAnswers: Set<Answer>, type: QuestionType, correctAnswerDescription: String?, id: Int?, points: Double) {
     self.question = question

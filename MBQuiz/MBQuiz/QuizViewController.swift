@@ -11,24 +11,15 @@ import UIKit
 class QuizViewController: UIViewController {
   
   @IBOutlet weak var collectionView: UICollectionView!
+  
   var quiz: Quiz!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     quiz = DummyQuiz.createDummyQuiz()
-    
-    collectionView.reloadData()
-    nextQuestion()
-  }
-  
-  func nextQuestion() {
-    guard let question = quiz.popQuestion() else {
-      // TODO: Display results
-      return
-    }
+    quiz.nextQuestion()
     collectionView.reloadData()
   }
-  
 }
 
 extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -42,11 +33,11 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     
-    switch quiz.questionSequel[indexPath.row] {
+    switch quiz.currentSequelType {
     case .question:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuestionCell", for: indexPath) as! QuestionCollectionViewCell
       cell.rightButton.isEnabled = false
-      cell.topLabel.text = quiz.currentQuestion!.question
+      cell.topLabel.text = quiz.currentQuestion?.question ?? "Results"
       
       cell.delegate = self
       cell.tableView.dataSource = self
@@ -61,7 +52,7 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
       cell.topLabel.text = currentQuestion.question
       cell.descriptionTextView.text = currentQuestion.correctAnswerDescription
       cell.delegate = self
-
+      
       return cell
     case .result:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultsCell", for: indexPath) as! ResultsCollectionViewCell
@@ -80,6 +71,21 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: collectionView.frame.size.width, height: collectionView.frame.size.height)
   }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView is UICollectionView {
+      collectionView.reloadData()
+      //      switch quiz.questionSequel[quiz.currentSequelIndex] {
+      //      case .question:
+      //        collectionView.reloadData()
+      //      case .description:
+      //        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+      //      case .result:
+      //        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
+      //        quiz.questionAnswered()
+      //      }
+    }
+  }
 }
 
 extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
@@ -89,7 +95,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if quiz.questionSequel[quiz.currentSequelIndex] == .question {
+    if quiz.currentSequelType == .question {
       return quiz.currentQuestion!.answers.count
     } else {
       return quiz.answeredQuestions.count
@@ -97,7 +103,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch quiz.questionSequel[quiz.currentSequelIndex] {
+    switch quiz.currentSequelType {
     case .question:
       let question = quiz.currentQuestion!
       let answer = question.answers[indexPath.row]
@@ -113,8 +119,13 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
       }
       return cell
     case .result:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell")!
-      cell.textLabel?.text = quiz.answeredQuestions[indexPath.row].question
+      /// HOT FIX - Even though collectionView loads this tableView for results it tries to modify earlier collectionViewCells tableView and app crashes
+      guard let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell") else {
+        return UITableViewCell()
+      }
+      let question = quiz.answeredQuestions[indexPath.row]
+      cell.textLabel?.text = question.question
+      cell.accessoryView = UIImageView(image: question.answeredCorrectly ? #imageLiteral(resourceName: "correct_icon") : #imageLiteral(resourceName: "false_icon"))
       return cell
     default:
       return UITableViewCell()
@@ -122,32 +133,35 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: false)
-    let question = quiz.currentQuestion!
-    let answer = question.answers[indexPath.row]
-    question.select(answer: answer)
-    tableView.reloadData()
-    let currentCell = collectionView.cellForItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0)) as! QuizCollectionViewCell
-    if question.selectedAnswers.count > 0 {
-      currentCell.rightButton.isEnabled = true
-    } else {
-      currentCell.rightButton.isEnabled = false
+    if quiz.currentSequelType == .question {
+      tableView.deselectRow(at: indexPath, animated: false)
+      let question = quiz.currentQuestion!
+      let answer = question.answers[indexPath.row]
+      question.select(answer: answer)
+      tableView.reloadData()
+      let currentCell = collectionView.cellForItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0)) as! QuizCollectionViewCell
+      if question.selectedAnswers.count > 0 {
+        currentCell.rightButton.isEnabled = true
+      } else {
+        currentCell.rightButton.isEnabled = false
+      }
     }
   }
 }
 
 extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
   func rightButtonPressed() {
-    switch quiz.nextInSequel() {
-    case .question:
+    if let nextInSequel = quiz.nextInSequel() {
+      switch nextInSequel {
+      case .question:
+        quiz.questionAnswered()
+        quiz.nextQuestion()
+      case .description:
+        break
+      case .result:
+        quiz.questionAnswered()
+      }
       collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      quiz.questionAnswered()
-      nextQuestion()
-    case .description:
-      collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-    case .result:
-      collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      quiz.questionAnswered()
     }
   }
   
