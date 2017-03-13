@@ -144,7 +144,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMZ-fU-tOc">
                                                                     <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
-                                                                    <state key="normal" title="Skip"/>
+                                                                    <state key="normal" title="Cancel"/>
                                                                     <connections>
                                                                         <action selector="leftButtonPressed:" destination="cv3-CO-aUX" eventType="touchUpInside" id="REa-nd-NkS"/>
                                                                     </connections>
@@ -237,7 +237,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFJ-h0-SRl">
                                                                     <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
-                                                                    <state key="normal" title="Skip"/>
+                                                                    <state key="normal" title="Cancel"/>
                                                                     <connections>
                                                                         <action selector="leftButtonPressed:" destination="SIi-Z1-RP9" eventType="touchUpInside" id="OQz-ZC-CsB"/>
                                                                     </connections>
@@ -344,7 +344,7 @@
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIq-Ai-SwP">
                                                                     <rect key="frame" x="0.0" y="0.0" width="155.5" height="30"/>
-                                                                    <state key="normal" title="Skip"/>
+                                                                    <state key="normal" title="Cancel"/>
                                                                     <connections>
                                                                         <action selector="leftButtonPressed:" destination="dtJ-2J-Bs4" eventType="touchUpInside" id="JES-OL-6Y7"/>
                                                                     </connections>

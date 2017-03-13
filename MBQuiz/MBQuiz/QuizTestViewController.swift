@@ -12,7 +12,9 @@ class QuizTestViewController: UIViewController {
   
   @IBAction func startQuiz(_ sender: Any) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let vc = storyboard.instantiateViewController(withIdentifier: "QuizVC")
+    let quiz = DummyQuiz.createDummyQuiz()
+    let vc = storyboard.instantiateViewController(withIdentifier: "QuizVC") as! QuizViewController
+    vc.quiz = quiz
     present(vc, animated: true, completion: nil)
   }
 }

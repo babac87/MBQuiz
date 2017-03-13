@@ -16,7 +16,6 @@ class QuizViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    quiz = DummyQuiz.createDummyQuiz()
     quiz.nextQuestion()
     collectionView.reloadData()
   }
@@ -151,18 +150,20 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
   func rightButtonPressed() {
-    if let nextInSequel = quiz.nextInSequel() {
-      switch nextInSequel {
-      case .question:
-        quiz.questionAnswered()
-        quiz.nextQuestion()
-        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      case .description:
-        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      case .result:
-        dismiss(animated: true, completion: nil)
-      }
+    guard let nextInSequel = quiz.nextInSequel() else {
+      dismiss(animated: true, completion: nil)
+      return
     }
+    switch nextInSequel {
+    case .question:
+      quiz.questionAnswered()
+      quiz.nextQuestion()
+    case .description:
+      break
+    case .result:
+      quiz.questionAnswered()
+    }
+    collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
   }
   
   func leftButtonPressed() {
