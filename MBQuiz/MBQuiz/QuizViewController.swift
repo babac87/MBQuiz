@@ -156,12 +156,12 @@ extension QuizViewController: NavigationButtonsCollectionViewCellDelegate {
       case .question:
         quiz.questionAnswered()
         quiz.nextQuestion()
+        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
       case .description:
-        break
+        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
       case .result:
-        quiz.questionAnswered()
+        dismiss(animated: true, completion: nil)
       }
-      collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
     }
   }
   
