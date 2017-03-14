@@ -50,6 +50,7 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
       let currentQuestion = quiz.currentQuestion!
       cell.topLabel.text = currentQuestion.question
       cell.descriptionTextView.text = currentQuestion.correctAnswerDescription
+      cell.correctImageView.image = currentQuestion.answeredCorrectly ? #imageLiteral(resourceName: "quiz_right_icon") : #imageLiteral(resourceName: "quiz_wrong_icon")
       cell.delegate = self
       
       return cell
@@ -74,15 +75,6 @@ extension QuizViewController: UICollectionViewDataSource, UICollectionViewDelega
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView is UICollectionView {
       collectionView.reloadData()
-      //      switch quiz.questionSequel[quiz.currentSequelIndex] {
-      //      case .question:
-      //        collectionView.reloadData()
-      //      case .description:
-      //        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      //      case .result:
-      //        collectionView.scrollToItem(at: IndexPath(row: quiz.currentSequelIndex, section: 0), at: UICollectionViewScrollPosition.right, animated: true)
-      //        quiz.questionAnswered()
-      //      }
     }
   }
 }
@@ -124,7 +116,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
       }
       let question = quiz.answeredQuestions[indexPath.row]
       cell.textLabel?.text = "\(indexPath.row + 1). " + question.question
-      cell.accessoryView = UIImageView(image: question.answeredCorrectly ? #imageLiteral(resourceName: "correct_icon") : #imageLiteral(resourceName: "false_icon"))
+      cell.accessoryView = UIImageView(image: question.answeredCorrectly ? #imageLiteral(resourceName: "quiz_stats_correct_icon") : #imageLiteral(resourceName: "quiz_stats_wrong_icon"))
       return cell
     default:
       return UITableViewCell()
