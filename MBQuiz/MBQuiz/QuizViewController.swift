@@ -109,7 +109,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
       
       let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell") as! AnswerTableViewCell
       
-      cell.answerLabel.text = answer.answer
+      cell.answerLabel.text = "\(indexPath.row + 1). " + answer.answer
       
       if question.selectedAnswers.contains(answer) {
         cell.checkImageView.image = #imageLiteral(resourceName: "answerbuttonselected_icon")
@@ -123,7 +123,7 @@ extension QuizViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewCell()
       }
       let question = quiz.answeredQuestions[indexPath.row]
-      cell.textLabel?.text = question.question
+      cell.textLabel?.text = "\(indexPath.row + 1). " + question.question
       cell.accessoryView = UIImageView(image: question.answeredCorrectly ? #imageLiteral(resourceName: "correct_icon") : #imageLiteral(resourceName: "false_icon"))
       return cell
     default:

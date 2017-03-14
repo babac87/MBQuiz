@@ -11,6 +11,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Quiz Test View Controller-->
         <scene sceneID="JKq-aY-MEZ">
@@ -75,11 +83,19 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-oM-msK">
                                                     <rect key="frame" x="16" y="211" width="311" height="448"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEA-dQ-DIk">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEA-dQ-DIk">
                                                             <rect key="frame" x="67" y="-88.5" width="177" height="177"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building" translatesAutoresizingMaskIntoConstraints="NO" id="7Cg-4r-mGT">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="building" translatesAutoresizingMaskIntoConstraints="NO" id="7Cg-4r-mGT">
                                                                     <rect key="frame" x="5" y="5" width="167" height="167"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="50"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusPercentage">
+                                                                            <real key="value" value="50"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,6 +106,14 @@
                                                                 <constraint firstAttribute="trailing" secondItem="7Cg-4r-mGT" secondAttribute="trailing" constant="5" id="ju5-5n-rC7"/>
                                                                 <constraint firstItem="7Cg-4r-mGT" firstAttribute="top" secondItem="uEA-dQ-DIk" secondAttribute="top" constant="5" id="vgy-rA-aNq"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="50"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusPercentage">
+                                                                    <real key="value" value="50"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bulb_icon" translatesAutoresizingMaskIntoConstraints="NO" id="I0a-YI-kRu">
                                                             <rect key="frame" x="117" y="50" width="77" height="77"/>
@@ -97,39 +121,44 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="I0a-YI-kRu" secondAttribute="height" multiplier="1:1" id="WiC-jG-kpf"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusPercentage">
+                                                                    <real key="value" value="50"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vZg-9y-JUZ">
-                                                            <rect key="frame" x="8" y="159.5" width="295" height="250.5"/>
+                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vZg-9y-JUZ">
+                                                            <rect key="frame" x="8" y="163" width="295" height="247"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnswerCell" rowHeight="70" id="BZm-Ce-OSI" customClass="AnswerTableViewCell" customModule="MBQuiz" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="28" width="295" height="70"/>
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AnswerCell" id="BZm-Ce-OSI" customClass="AnswerTableViewCell" customModule="MBQuiz" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="28" width="295" height="60"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BZm-Ce-OSI" id="chW-NS-RPv">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="69"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="295" height="60"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="answerbutton_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1FB-0o-LQQ">
-                                                                                <rect key="frame" x="237" y="9" width="50" height="50"/>
+                                                                                <rect key="frame" x="262" y="17.5" width="25" height="25"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="width" constant="50" id="aVQ-1m-q3i"/>
+                                                                                    <constraint firstAttribute="height" constant="25" id="Fq9-Vk-Pnh"/>
+                                                                                    <constraint firstAttribute="width" constant="25" id="aVQ-1m-q3i"/>
                                                                                 </constraints>
                                                                             </imageView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g0-fi-nVk">
-                                                                                <rect key="frame" x="8" y="9" width="220" height="50"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5g0-fi-nVk">
+                                                                                <rect key="frame" x="8" y="8" width="245" height="44"/>
+                                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="5g0-fi-nVk" firstAttribute="leading" secondItem="chW-NS-RPv" secondAttribute="leadingMargin" id="Cfc-eZ-jFg"/>
-                                                                            <constraint firstItem="5g0-fi-nVk" firstAttribute="top" secondItem="1FB-0o-LQQ" secondAttribute="top" id="ILr-lw-JS7"/>
-                                                                            <constraint firstItem="5g0-fi-nVk" firstAttribute="top" secondItem="chW-NS-RPv" secondAttribute="topMargin" constant="1" id="JWe-l5-EPd"/>
-                                                                            <constraint firstItem="5g0-fi-nVk" firstAttribute="centerY" secondItem="chW-NS-RPv" secondAttribute="centerY" id="VGd-Um-OF7"/>
+                                                                            <constraint firstItem="5g0-fi-nVk" firstAttribute="top" secondItem="chW-NS-RPv" secondAttribute="topMargin" id="JWe-l5-EPd"/>
+                                                                            <constraint firstAttribute="bottomMargin" secondItem="5g0-fi-nVk" secondAttribute="bottom" id="VK6-iC-u4k"/>
                                                                             <constraint firstItem="1FB-0o-LQQ" firstAttribute="leading" secondItem="5g0-fi-nVk" secondAttribute="trailing" constant="9" id="VKj-4n-l1A"/>
                                                                             <constraint firstItem="1FB-0o-LQQ" firstAttribute="trailing" secondItem="chW-NS-RPv" secondAttribute="trailingMargin" id="Xwc-yN-etx"/>
-                                                                            <constraint firstItem="5g0-fi-nVk" firstAttribute="bottom" secondItem="1FB-0o-LQQ" secondAttribute="bottom" id="jRh-Bo-5eQ"/>
+                                                                            <constraint firstItem="1FB-0o-LQQ" firstAttribute="centerY" secondItem="5g0-fi-nVk" secondAttribute="centerY" id="bh3-d9-WF0"/>
                                                                         </constraints>
                                                                     </tableViewCellContentView>
                                                                     <connections>
@@ -162,8 +191,8 @@
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYu-ec-pY0">
-                                                            <rect key="frame" x="8" y="131" width="295" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <rect key="frame" x="8" y="131" width="295" height="24"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -204,6 +233,8 @@
                                             <outlet property="rightButton" destination="JGE-1x-Gnu" id="Rf1-GE-f7Q"/>
                                             <outlet property="tableView" destination="vZg-9y-JUZ" id="PuI-yT-4Fd"/>
                                             <outlet property="topLabel" destination="NYu-ec-pY0" id="faf-3z-i0p"/>
+                                            <outlet property="whiteBackgroundView" destination="ohi-oM-msK" id="wtN-Ek-Wfw"/>
+                                            <outlet property="whiteCircleView" destination="uEA-dQ-DIk" id="RSM-97-0I6"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DescriptionCell" id="SIi-Z1-RP9" customClass="DescriptionCollectionViewCell" customModule="MBQuiz" customModuleProvider="target">
@@ -255,16 +286,16 @@
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6j-9u-MPr">
-                                                            <rect key="frame" x="8" y="131" width="295" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <rect key="frame" x="8" y="131" width="295" height="24"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w59-WV-BQU">
-                                                            <rect key="frame" x="8" y="159.5" width="295" height="250.5"/>
+                                                            <rect key="frame" x="8" y="163" width="295" height="247"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stat_icon" translatesAutoresizingMaskIntoConstraints="NO" id="FW3-h1-682">
@@ -311,6 +342,8 @@
                                             <outlet property="leftButton" destination="UFJ-h0-SRl" id="vjc-DE-0tr"/>
                                             <outlet property="rightButton" destination="Rqr-Tx-gSi" id="5h5-pz-4hf"/>
                                             <outlet property="topLabel" destination="d6j-9u-MPr" id="94e-yR-mP1"/>
+                                            <outlet property="whiteBackgroundView" destination="aas-J2-oAV" id="RFv-SZ-gD4"/>
+                                            <outlet property="whiteCircleView" destination="dtn-w6-CNq" id="h7t-4b-Et9"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultsCell" id="dtJ-2J-Bs4" customClass="ResultsCollectionViewCell" customModule="MBQuiz" customModuleProvider="target">
@@ -362,26 +395,26 @@
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKx-fc-hSv">
-                                                            <rect key="frame" x="70" y="92.5" width="177" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <rect key="frame" x="70" y="92.5" width="177" height="24"/>
+                                                            <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-EP-ypW">
-                                                            <rect key="frame" x="8" y="121" width="295" height="289.5"/>
+                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3NB-EP-ypW">
+                                                            <rect key="frame" x="8" y="124.5" width="295" height="286"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <prototypes>
                                                                 <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultCell" textLabel="LQu-5s-buo" style="IBUITableViewCellStyleDefault" id="tRC-2m-uxi">
                                                                     <rect key="frame" x="0.0" y="28" width="295" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tRC-2m-uxi" id="Ua7-Da-lwb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="43"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="44"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LQu-5s-buo">
-                                                                                <rect key="frame" x="15" y="0.0" width="241" height="43"/>
+                                                                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title Title Title Title Title Title Title Title Title " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LQu-5s-buo">
+                                                                                <rect key="frame" x="15" y="0.0" width="241" height="44"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
@@ -423,6 +456,8 @@
                                             <outlet property="rightButton" destination="F7W-D4-c0p" id="TCK-Tp-IZ8"/>
                                             <outlet property="tableView" destination="3NB-EP-ypW" id="qr8-vH-z9u"/>
                                             <outlet property="topLabel" destination="VKx-fc-hSv" id="FdD-If-WqC"/>
+                                            <outlet property="whiteBackgroundView" destination="PRY-8j-Xr7" id="EKx-la-qbm"/>
+                                            <outlet property="whiteCircleView" destination="BPb-Gx-Z9D" id="kfz-Sf-3Tb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

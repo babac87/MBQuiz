@@ -11,7 +11,12 @@ import UIKit
 
 
 class QuestionCollectionViewCell: QuizCollectionViewCell {
-    
+  
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
+    questionImageView.round()
+  }
+  
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var questionImageView: UIImageView!
 }

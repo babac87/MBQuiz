@@ -17,10 +17,19 @@ class QuizCollectionViewCell: UICollectionViewCell {
   
   var delegate: NavigationButtonsCollectionViewCellDelegate?
 
+  @IBOutlet weak var whiteBackgroundView: UIView!
+  @IBOutlet weak var whiteCircleView: UIView!
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var topLabel: UILabel!
   @IBOutlet weak var leftButton: UIButton!
   @IBOutlet weak var rightButton: UIButton!
+  
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
+    whiteBackgroundView.layer.cornerRadius = 15.0
+    whiteCircleView.round()
+    imageView.round()
+  }
   
   @IBAction func leftButtonPressed(_ sender: UIButton) {
     delegate?.leftButtonPressed()
