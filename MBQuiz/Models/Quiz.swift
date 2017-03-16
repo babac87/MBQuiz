@@ -48,8 +48,9 @@ class Quiz: NSObject, Unboxable {
       questionSequel.append(.result)
     }
   }
+  
   init(questions: [Question], startingResult result: Double = 0.0, id: Int?) {
-    self.questions = questions.reversed()
+    self.questions = questions
     self.answeredQuestions = [Question]()
     self.result = result
     if let id = id {
