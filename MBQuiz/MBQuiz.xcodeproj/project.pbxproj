@@ -19,6 +19,8 @@
 		EE458D891E78340100BEE644 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE458D861E78340100BEE644 /* Lato-Bold.ttf */; };
 		EE458D8A1E78340100BEE644 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE458D871E78340100BEE644 /* Lato-Regular.ttf */; };
 		EE458D8B1E78340100BEE644 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE458D871E78340100BEE644 /* Lato-Regular.ttf */; };
+		EE6363C31E7BE66F00B475CD /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE6363C21E7BE66F00B475CD /* Quiz.storyboard */; };
+		EE6363C41E7BE66F00B475CD /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE6363C21E7BE66F00B475CD /* Quiz.storyboard */; };
 		EE7EEDB31E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
 		EE7EEDB41E670FB000C472C3 /* DummyQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */; };
 		EE7EEDB61E68367900C472C3 /* QuestionSequelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */; };
@@ -72,6 +74,7 @@
 		EE458D821E7812F600BEE644 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = Models/Extensions.swift; sourceTree = SOURCE_ROOT; };
 		EE458D861E78340100BEE644 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		EE458D871E78340100BEE644 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		EE6363C21E7BE66F00B475CD /* Quiz.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Quiz.storyboard; sourceTree = "<group>"; };
 		EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyQuiz.swift; sourceTree = "<group>"; };
 		EE7EEDB51E68367900C472C3 /* QuestionSequelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionSequelType.swift; path = Models/QuestionSequelType.swift; sourceTree = SOURCE_ROOT; };
 		EE7EEDB81E68479A00C472C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 			children = (
 				EEBC23BB1E4353A800D59B75 /* AppDelegate.swift */,
 				EEBC23BF1E4353A800D59B75 /* Main.storyboard */,
+				EE6363C21E7BE66F00B475CD /* Quiz.storyboard */,
 				EE7EEDB21E670FB000C472C3 /* DummyQuiz.swift */,
 				EEBC23F21E486E3600D59B75 /* ViewControllers */,
 				EEBC23F31E486E4200D59B75 /* Views */,
@@ -322,6 +326,7 @@
 				EE458D8A1E78340100BEE644 /* Lato-Regular.ttf in Resources */,
 				EEBC23C11E4353A800D59B75 /* Main.storyboard in Resources */,
 				EE458D881E78340100BEE644 /* Lato-Bold.ttf in Resources */,
+				EE6363C31E7BE66F00B475CD /* Quiz.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +337,7 @@
 				EE7EEDBA1E68479A00C472C3 /* Assets.xcassets in Resources */,
 				EE458D8B1E78340100BEE644 /* Lato-Regular.ttf in Resources */,
 				EE458D891E78340100BEE644 /* Lato-Bold.ttf in Resources */,
+				EE6363C41E7BE66F00B475CD /* Quiz.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
