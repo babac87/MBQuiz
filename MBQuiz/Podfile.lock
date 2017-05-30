@@ -1,12 +1,19 @@
 PODS:
-  - Unbox (2.3.1)
+  - MBQuiz (0.1.1):
+    - Unbox
+  - Unbox (2.4.0)
 
 DEPENDENCIES:
-  - Unbox
+  - MBQuiz (from `~/Documents/Libraries/MBQuiz`)
+
+EXTERNAL SOURCES:
+  MBQuiz:
+    :path: ~/Documents/Libraries/MBQuiz
 
 SPEC CHECKSUMS:
-  Unbox: 96e54c15284b97244a1daf8ea560f648dd08f0db
+  MBQuiz: 1130aa8a757076546e9f739c59eb82b9c081bd5e
+  Unbox: c8b2ab69d3337597b4a3f47a0538807dc12db670
 
-PODFILE CHECKSUM: 9ea46d9bd589c306c728423fa4b2e61086329b31
+PODFILE CHECKSUM: 633379b9ab15b9ee304ea2e30c63cc302d375891
 
 COCOAPODS: 1.1.1

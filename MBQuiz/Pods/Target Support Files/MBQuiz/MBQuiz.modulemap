@@ -1,0 +1,6 @@
+framework module MBQuiz {
+  umbrella header "MBQuiz-umbrella.h"
+
+  export *
+  module * { export * }
+}

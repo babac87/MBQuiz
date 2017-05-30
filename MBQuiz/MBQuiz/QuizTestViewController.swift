@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBQuiz
 
 class QuizTestViewController: UIViewController {
   

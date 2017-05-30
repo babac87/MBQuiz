@@ -1,0 +1,31 @@
+{
+  "name": "MBQuiz",
+  "version": "0.1.1",
+  "summary": "Fully functional Quiz",
+  "description": "Fully functional iPhone Quiz",
+  "homepage": "https://github.com/babac87/MBQuiz",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Mirko Babic": "mirkobabic87@gmail.com"
+  },
+  "social_media_url": "https://www.linkedin.com/in/mirkobabic87/",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/babac87/MBQuiz",
+    "tag": "0.1.1"
+  },
+  "source_files": "MBQuiz/**/*.{h,m,swift}",
+  "resources": "MBQuiz/**/*.{png,jpeg,jpg,storyboard,xib,xcassets",
+  "frameworks": "UIKit",
+  "dependencies": {
+    "Unbox": [
+
+    ]
+  },
+  "requires_arc": true
+}
